@@ -1,3 +1,7 @@
+# Add service account and logs bucket
+serviceAccount: '307756948431-compute@developer.gserviceaccount.com' 
+logsBucket: 'gs://smart-qna-build-logs'                             
+
 steps:
   # Step 1: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
