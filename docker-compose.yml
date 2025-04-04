@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  smart-qna:
+    image: smart-qna
+    container_name: smart-qna-api
+    ports:
+      - "8000:8080"
+    env_file:
+      - .env
+    volumes:
+      - ~/.config/gcloud:/root/.config/gcloud
+    restart: unless-stopped
