@@ -2,8 +2,17 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Optional
 from app.rag_chain import RAGChain
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://arnab1009.github.io"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Request body model
 class QuestionRequest(BaseModel):
