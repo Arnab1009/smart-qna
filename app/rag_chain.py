@@ -6,6 +6,7 @@ from langchain_google_vertexai import VertexAIEmbeddings
 from langchain.prompts import ChatPromptTemplate
 from langchain_google_vertexai import ChatVertexAI
 from langchain_core.output_parsers import StrOutputParser
+from langsmith import traceable
 
 class RAGChain:
     def __init__(self, k: int = 5, model_name: str = "gemini-2.5-pro-exp-03-25", embedding_model_name: str = "text-embedding-005"):
@@ -41,6 +42,7 @@ class RAGChain:
         
         self.chain = self.prompt | self.llm | self.parser
 
+    @traceable(name="Smart QnA Chain")
     def run(self, question: str):
 
         # Retrieve relevant docs
